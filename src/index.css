@@ -1,13 +1,376 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+.hero-section {
+  height: 100vh;               /* FULL SCREEN */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  padding-left: 80px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* HERO CONTENT */
+.hero-content {
+  max-width: 520px;
+}
+
+/* TITLE */
+.home-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* TEXT */
+.home-page {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+
+/* ================= ABOUT SECTION ================= */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* SECTION */
+.about-section {
+  background-color: #f3e3cb;
+ 
+  padding: 80px 60px;
+
+}
+
+/* CONTAINER */
+.about-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* TOP LAYOUT */
+.about-top {
+  display: grid;
+  grid-template-columns: 420px 1fr; /* 🔥 FIXED IMAGE WIDTH */
+  gap: 70px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+/* IMAGE WRAPPER */
+.about-image {
+  width: 420px;
+  height: 320px;                 /* 🔥 SAME HEIGHT AS REFERENCE */
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(0,0,0,0.25);
+}
+
+/* IMAGE ITSELF */
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* 🔥 CROPS NICELY */
+}
+
+/* TEXT */
+.about-text h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 14px;
+  max-width: 520px;
+}
+
+/* FEATURES */
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* FEATURE CARD */
+.feature-card {
+  background: #000;
+  color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-top {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-image {
+    margin: auto;
+  }
+
+  .about-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* ================= PAGE CONTAINER ================= */
+/* ================= CONTAINER ================= */
+/* ================= CONTAINER ================= */
+.container.my-5 {
+  background-color: #f6efe6;
+  padding: 60px 55px;
+  border-radius: 28px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* ================= TITLE ================= */
+.container.my-5 h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 55px;
+  color: #222;
+}
+
+/* ================= GRID ================= */
+.plants-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* ================= CARD ================= */
+.card {
+  background-color: #f5eded;
+  border-radius: 24px;
+  padding: 20px;
+  border: none;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.10);
+  transition: transform 0.25s ease;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* ================= IMAGE ================= */
+.card-img-top {
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+  background-color: #f8f8f8;
+  border-radius: 18px;
+  padding: 14px;
+}
+
+/* ================= TEXT ================= */
+.card-body.text-center {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.card-body h5 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.card-body p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+/* ================= BUTTON ================= */
+.btn.btn-success {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 28px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn.btn-success:hover {
+  background-color: #2bcf44;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .plants-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .plants-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* SECTION */
+.contact-section {
+  background-color: #f6efe6;
+  padding: 50px 20px;
+}
+
+/* CONTAINER */
+.contact-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 50px;
+  align-items: center;
+      
+}
+
+/* LEFT */
+.contact-info h2 {
+  font-size: 38px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+
+}
+
+.contact-info p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 25px;
+  font-size: 18px ;
+  margin-left: 50px;
+  font-weight: 100 bold;
+
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 20px;
+  margin-bottom: 30px;
+ font-size: 18px ;
+   margin-left: 50px;
+
+}
+
+.contact-info li {
+  font-size: 20px bold;
+  margin-bottom: 15px;
+
+}
+
+/* BUTTON */
+.btn-primary {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  cursor: pointer;
+    margin-left: 50px;
+
+   
+
+}
+
+.btn-primary:hover {
+  background-color: #2bcf44;
+}
+
+/* FORM CARD */
+.contact-form {
+  background-color: #fff;
+  border-radius: 18px;
+  padding: 35px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* FORM */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group.full {
+  width: 100%;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input,
+textarea {
+  width: 100%;
+  background-color: #f4ede4;
+  border: none;
+  border-radius: 18px;
+  padding: 12px 15px;
+  font-size: 14px;
+  outline: none;
+}
+
+textarea {
+  height: 110px;
+  resize: none;
+}
+
+/* BUTTON ALIGN */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
 }
