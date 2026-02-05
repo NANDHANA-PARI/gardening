@@ -15,9 +15,10 @@ function Contact() {
           </p>
 
           <ul>
-            <li>📧 gardentales@gmail.com</li>
-            <li>📞 +91-8907656789</li>
-            <li>📍 Bangalore, India</li>
+            <li> <i class="fa fa-envelope" aria-hidden="true"> greenhaven@gmail.com </i></li>
+
+            <li><i class="fa fa-phone" aria-hidden="true"> +91-8907656789</i></li>
+            <li><i class="fa fa-map-marker" aria-hidden="true"> Bangalore, India</i></li>
           </ul>
 
           <button className="btn-primary">Book Now</button>

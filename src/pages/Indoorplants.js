@@ -25,11 +25,16 @@ function Indoorplants() {
                    <h5>{name}</h5>
                    <p>₹{price}</p>
                    <button
-                     className="btn btn-success"
-                     onClick={() => addToCart(name, price)}
-                   >
-                     Add to cart
-                   </button>
+                  className="btn btn-success"
+                  onClick={() =>
+                    addToCart({
+                      name: name,
+                      price: price
+                    })
+                  }
+                >
+                  Add to cart
+                </button>
                  </div>
                </div>
              </div>

@@ -14,9 +14,9 @@ function Services() {
                    
                        <div className="row">
                          {[
-                           ["Lawn Care & Maintainence",40, services1],
-                           ["Planting,pruning & Garden Maintainence", 100, services2],
-                           ["Landsscape Design & Installation", 500, services3],
+                           ["Lawn Care & Maintainence",4000, services1],
+                           ["Planting,pruning & Maintainence", 1000, services2],
+                           ["Landsscape Design & Installation", 5000, services3],
                          ].map(([name, price, img]) => (
                            <div className="col" key={name}>
                              <div className="card">
@@ -24,12 +24,17 @@ function Services() {
                                <div className="card-body text-center">
                                  <h5>{name}</h5>
                                  <p>₹{price}</p>
-                                 <button
-                                   className="btn btn-success"
-                                   onClick={() => addToCart(name, price)}
-                                 >
-                                   Add to cart
-                                 </button>
+                                  <button
+                  className="btn btn-success"
+                  onClick={() =>
+                    addToCart({
+                      name: name,
+                      price: price
+                    })
+                  }
+                >
+                  Add to cart
+                </button>
                                </div>
                              </div>
                            </div>

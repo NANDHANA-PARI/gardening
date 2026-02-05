@@ -1,6 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import i1 from "../i1.jpeg";
 
+
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <section
       className="hero-section"
@@ -10,7 +14,7 @@ function Home() {
     >
       <div className="hero-content">
         <h1 className="home-title">
-          “Bringing Life to <br /> Every Corner”
+          <i>“Bringing Life to <br /> Every Corner”</i>
         </h1>
 
         <p className="home-page">
@@ -18,7 +22,9 @@ function Home() {
           lush, sustainable gardens that flourish naturally.
         </p>
 
-        <button className="btn btn-dark rounded-pill px-4 py-2">
+        <button
+          className="btn btn-dark rounded-pill px-4 py-2"
+           onClick={() => navigate("/plants/indoorplants")}        >
           Shop Now
         </button>
       </div>

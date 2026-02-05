@@ -122,20 +122,31 @@ function Header() {
               <i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
               <a href="" className="btn btn-outline-dark">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart(0)</a>
-            </div>*/}
-             <li className="nav-item">
-            <button
-              className="btn btn-success position-relative ms-3"
-              onClick={() => navigate("/cart")}
-            >
-              🛒
-              {cartCount > 0 && (
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-            </li>
+            <   /div>*/}
+      <li className="nav-item">
+  <button
+    className="login-icon-btn"
+    onClick={() => navigate("/login")}
+  >
+<i class="fa fa-user-o" aria-hidden="true"></i>
+  </button>
+</li>
+
+<li className="nav-item">
+  <button
+    className="login-icon-btn"
+    onClick={() => navigate("/cart")}
+  >
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+
+    {cartCount > 0 && (
+      <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {cartCount}
+      </span>
+    )}
+  </button>
+</li>
+
             </ul>
         </div>
       </div>

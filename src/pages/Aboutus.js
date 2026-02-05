@@ -30,14 +30,41 @@ function Aboutus() {
         </div>
 
         {/* FEATURES */}
-        <div className="about-features">
-          <div className="feature-card">🚚 Free delivery<br />on all orders</div>
-          <div className="feature-card">🎁 Offers and gifts<br />on all orders</div>
-          <div className="feature-card">🔒 Secure payments<br />protected by paypal</div>
-          <div className="feature-card">🔄 10 days returns<br />moneyback garantee</div>
-        </div>
+     <div className="about-features">
+  <div className="feature-card">
+    <i className="bi bi-truck feature-icon"></i>
+    <div className="feature-text">
+      <strong>Free delivery</strong>
+      <span>on all orders</span>
+    </div>
+  </div>
 
-      </div>
+  <div className="feature-card">
+    <i className="bi bi-gift feature-icon"></i>
+    <div className="feature-text">
+      <strong>Offers and gifts</strong>
+      <span>on all orders</span>
+    </div>
+  </div>
+
+  <div className="feature-card">
+    <i className="bi bi-credit-card feature-icon"></i>
+    <div className="feature-text">
+      <strong>Secure payments</strong>
+      <span>protected by PayPal</span>
+    </div>
+  </div>
+
+  <div className="feature-card">
+    <i className="bi bi-arrow-repeat feature-icon"></i>
+    <div className="feature-text">
+      <strong>10 days returns</strong>
+      <span>moneyback guarantee</span>
+    </div>
+  </div>
+</div>
+</div>
+
     </section>
   );
 }
