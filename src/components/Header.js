@@ -14,7 +14,7 @@ function Header() {
   <img
     src={log2}
     alt="Green Haven Logo"
-    style={{ height: "65px" }}
+    style={{ height: "30px" }}
   />
 </Link>
 
