@@ -8,7 +8,7 @@ function Cart() {
 
   return (
     <div className="container my-5">
-      <h2>🛒 Your Cart</h2>
+      <h2>Your Cart</h2>
 
       {cart.length === 0 ? (
         <p>Your cart is empty</p>

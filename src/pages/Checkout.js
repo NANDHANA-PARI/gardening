@@ -43,7 +43,7 @@ function Checkout() {
 
   return (
     <div className="containers">
-      <h2 className="checkout-title">🧾 Secure Checkout</h2>
+      <h2 className="checkout-title"> Secure Checkout</h2>
 
       {/* ADDRESS */}
       <div className="checkout-box">

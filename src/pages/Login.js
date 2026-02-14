@@ -22,7 +22,7 @@ function Login() {
   return (
     <div className="auth-page">
       <form className="auth-card" onSubmit={handleLogin}>
-        <h2>Welcome Back 🌿</h2>
+        <h2>Welcome Back </h2>
         <p className="subtitle">Login to Garden Haven</p>
 
         {error && <small style={{ color: "red" }}>{error}</small>}

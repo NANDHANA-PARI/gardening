@@ -21,6 +21,7 @@ import Flowerseeds from "./pages/Flowerseeds";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
@@ -29,6 +30,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentMethod from "./components/PaymentMethod";
+
 
 function App() {
   return (
@@ -60,6 +62,9 @@ function App() {
           <Route path="/seeds/fruitseeds" element={<Fruitseeds />} />
           <Route path="/seeds/vegetableseeds" element={<Vegetableseeds />} />
           <Route path="/seeds/flowerseeds" element={<Flowerseeds />} />
+         
+          
+
         </Routes>
 
         <Footer />

@@ -60,21 +60,24 @@ function PaymentMethod({ method, setMethod, setPaymentValid }) {
           <label className="form-check-label">
 {opt === "CARD" && (
   <>
-    <i className="fa fa-credit-card me-2"></i> Card
+    <i className="fa fa-credit-card"></i>
+    <span className="ms-2">Card</span>
   </>
 )}
+
 {opt === "UPI" && (
   <>
-    <i className="fa fa-exchange me-2"></i> UPI
+    <i className="fa fa-exchange"></i>
+    <span className="ms-2">UPI</span>
   </>
 )}
 
 {opt === "COD" && (
   <>
-    <i className="fa fa-inr me-2"></i> Cash on Delivery
+    <i className="fa fa-inr"></i>
+    <span className="ms-2">Cash on Delivery</span>
   </>
 )}
-
 
 
           </label>
