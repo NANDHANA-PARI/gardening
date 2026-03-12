@@ -1,144 +1,110 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { FaCreditCard, FaTruck } from "react-icons/fa";
 
-function PaymentMethod({ method, setMethod, setPaymentValid }) {
-  const [card, setCard] = useState({
-    number: "",
-    expiry: "",
-    cvv: "",
-    name: "",
-  });
-
-  const [upi, setUpi] = useState("");
-  const [error, setError] = useState("");
-
+function PaymentMethod({
+  method,
+  setMethod,
+  setPaymentValid,
+  onPaymentSuccess = () => {},
+  onCodSuccess = () => {},
+  totalAmount,
+  paymentCompleted = false
+}) {
   useEffect(() => {
-    if (method === "CARD") {
-      const valid =
-        card.number.length === 16 &&
-        card.expiry &&
-        card.cvv.length === 3 &&
-        card.name;
-
-      setPaymentValid(valid);
-      setError(valid ? "" : "Enter valid card details");
-    }
-
-    else if (method === "UPI") {
-      const valid = upi.trim().includes("@");
-      setPaymentValid(valid);
-      setError(valid ? "" : "Enter valid UPI ID");
-    }
-
-    else if (method === "COD") {
-      setPaymentValid(true);
-      setError("");
-    }
-
-    else {
+    if (!method) {
       setPaymentValid(false);
-      setError("");
+      return;
     }
-  }, [method, card, upi, setPaymentValid]);
+    setPaymentValid(true);
+  }, [method, setPaymentValid]);
+
+  // Razorpay integration
+  const startRazorpay = () => {
+    if (!window.Razorpay) {
+      alert("Payment gateway not loaded");
+      return;
+    }
+
+    const options = {
+      key: "rzp_test_SHZXqyCPSMZR3I", // test key
+      amount: totalAmount * 100,      // amount in paise
+      currency: "INR",
+      name: "Green Haven",
+      description: "Plant Purchase",
+      handler: function () {
+        onPaymentSuccess(); // ✅ navigate to success page
+      },
+      modal: { ondismiss: () => alert("Payment cancelled") },
+      theme: { color: "#2e7d32" }
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+
+  const handlePayNow = () => {
+    if (paymentCompleted) return; // prevent re-click
+
+    if (totalAmount <= 0) {
+      alert("Cart is empty");
+      return;
+    }
+
+    if (method === "COD") {
+      alert("Order placed 🚚 Pay on delivery");
+      onCodSuccess();
+      return;
+    }
+
+    if (method === "ONLINE") {
+      startRazorpay();
+      return;
+    }
+
+    alert("Please select a payment method");
+  };
+
+  // Dynamic button label
+  let buttonLabel = "Complete Payment";
+  if (method === "ONLINE") {
+    buttonLabel = paymentCompleted ? " ✅ Payment Completed" : `Pay ₹${totalAmount}`;
+  } else if (method === "COD") {
+    buttonLabel = "Place Order";
+  }
 
   return (
-    <div className="mb-4">
-      <h5 className="fw-bold mb-3">Payment Method</h5>
+    <div className="payment-wrapper">
+      <h5 className="payment-heading">Choose Payment Method</h5>
 
-      {/* OPTIONS */}
-      {["CARD", "UPI", "COD"].map((opt) => (
-        <div className="form-check mb-2" key={opt}>
-          <input
-            type="radio"
-            className="form-check-input"
-            name="payment"
-            checked={method === opt}
-            onChange={() => {
-              setMethod(opt);
-              setError("");
-            }}
-          />
-          <label className="form-check-label">
-{opt === "CARD" && (
-  <>
-    <i className="fa fa-credit-card"></i>
-    <span className="ms-2">Card</span>
-  </>
-)}
-
-{opt === "UPI" && (
-  <>
-    <i className="fa fa-exchange"></i>
-    <span className="ms-2">UPI</span>
-  </>
-)}
-
-{opt === "COD" && (
-  <>
-    <i className="fa fa-inr"></i>
-    <span className="ms-2">Cash on Delivery</span>
-  </>
-)}
-
-
-          </label>
-        </div>
-      ))}
-
-      {/* CARD */}
-      {method === "CARD" && (
-        <div className="border rounded p-3 mt-3">
-          <input
-            className="form-control mb-2"
-            placeholder="Card Number"
-            maxLength={16}
-            onChange={(e) => setCard({ ...card, number: e.target.value })}
-          />
-
-          <div className="d-flex gap-2">
-            <input
-              className="form-control"
-              placeholder="MM/YY"
-              onChange={(e) => setCard({ ...card, expiry: e.target.value })}
-            />
-            <input
-              className="form-control"
-              placeholder="CVV"
-              maxLength={3}
-              onChange={(e) => setCard({ ...card, cvv: e.target.value })}
-            />
+      <div
+        className={`payment-card ${method === "ONLINE" ? "active" : ""}`}
+        onClick={() => setMethod("ONLINE")}
+      >
+        <div className="payment-content">
+          <FaCreditCard className="payment-icon" />
+          <div>
+            <h6>Online Payment</h6>
+            <p>Pay securely using UPI / Card / Netbanking</p>
           </div>
-
-          <input
-            className="form-control mt-2"
-            placeholder="Card Holder Name"
-            onChange={(e) => setCard({ ...card, name: e.target.value })}
-          />
         </div>
-      )}
+      </div>
 
-      {/* UPI */}
-      {method === "UPI" && (
-        <input
-          className="form-control mt-3"
-          placeholder="example@upi"
-          value={upi}
-          onChange={(e) => setUpi(e.target.value)}
-        />
-      )}
-
-      {/* COD */}
-      {method === "COD" && (
-        <div className="alert alert-info mt-3">
-          Pay when your order arrives
+      <div
+        className={`payment-card ${method === "COD" ? "active" : ""}`}
+        onClick={() => setMethod("COD")}
+      >
+        <div className="payment-content">
+          <FaTruck className="payment-icon" />
+          <div>
+            <h6>Cash on Delivery</h6>
+            <p>Pay when your order arrives</p>
+          </div>
         </div>
-      )}
+      </div>
 
-      {/* ERROR */}
-      {error && (
-        <small className="text-danger d-block mt-2">
-          {error}
-        </small>
-      )}
+      <button className="payment-btn" onClick={handlePayNow} disabled={paymentCompleted}>
+        {buttonLabel}
+      </button>
     </div>
   );
 }

@@ -16,7 +16,7 @@ function OutdoorPlants() {
          ["China Plant", 500, outdoor1],
          ["Watermelon Peperomia", 50, outdoor2],
          ["petra Croton", 50, outdoor3],
-         ["Money Plant Variegated", 50, outdoor4],
+         ["Purple Lavender Flower Tree", 50, outdoor4],
        ].map(([name, price, img]) => (
          <div className="col" key={name}>
            <div className="card">
@@ -27,9 +27,11 @@ function OutdoorPlants() {
                  <button
                   className="btn btn-success"
                   onClick={() =>
-                    addToCart({
-                      name: name,
-                      price: price
+  addToCart({
+    id: name + price,   // id add pannu
+    name: name,
+    price: price,
+    image: img    
                     })
                   }
                 >

@@ -29,10 +29,12 @@ function Plasticpots(){
                        <p>₹{price}</p>
                         <button
                   className="btn btn-success"
-                  onClick={() =>
-                    addToCart({
-                      name: name,
-                      price: price
+                 onClick={() =>
+  addToCart({
+    id: name + price,   // id add pannu
+    name: name,
+    price: price,
+    image: img    
                     })
                   }
                 >

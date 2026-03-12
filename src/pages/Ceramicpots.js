@@ -28,9 +28,11 @@ function Ceramicpots() {
                      <button
                   className="btn btn-success"
                   onClick={() =>
-                    addToCart({
-                      name: name,
-                      price: price
+  addToCart({
+    id: name + price,   // id add pannu
+    name: name,
+    price: price,
+    image: img    
                     })
                   }
                 >

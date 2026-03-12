@@ -1,8 +1,77 @@
-
+import React, { useState } from "react";
+import leafs from "../images/leafs.jpeg";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    username: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (loading) return; // prevent double click
+    setLoading(true);
+
+    const templateParams = {
+      username: formData.username,
+      phone: formData.phone,
+      email: formData.email,
+      message: formData.message,
+      date_time: new Date().toLocaleString(),
+    };
+
+    try {
+      // 🔵 Send mail to ADMIN
+      await emailjs.send(
+        "service_arzpqeu",
+        "template_xll89va", // ADMIN TEMPLATE
+        templateParams,
+        "WSomyCQc3pwU9Jw6v"
+      );
+
+      // 🔵 Send confirmation to CUSTOMER
+      await emailjs.send(
+        "service_arzpqeu",
+        "template_thblmzf", // CUSTOMER TEMPLATE
+        templateParams,
+        "WSomyCQc3pwU9Jw6v"
+      );
+
+      alert("Message Sent Successfully 🌿");
+
+      setFormData({
+        username: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
+
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to send ❌");
+    }
+
+    setLoading(false);
+  };
+
   return (
-    <section className="contact-section">
+    <section
+      className="contact-section"
+      style={{ backgroundImage: `url(${leafs})` }}
+    >
       <div className="contact-container">
 
         {/* LEFT SIDE */}
@@ -15,55 +84,77 @@ function Contact() {
           </p>
 
           <ul>
-           <li>
-  <i class="fa fa-envelope" aria-hidden="true"></i>
-  <span class="contact-text">greenhaven@gmail.com</span>
-</li>
-
-<li>
-  <i class="fa fa-phone" aria-hidden="true"></i>
-  <span class="contact-text">+91-8907656789</span>
-</li>
-
-<li>
-  <i class="fa fa-map-marker" aria-hidden="true"></i>
-  <span class="contact-text">Bangalore, India</span>
-</li>
-
+            <li>
+              <i className="fa fa-envelope"></i>
+              <span> greenhaven@gmail.com</span>
+            </li>
+            <li>
+              <i className="fa fa-phone"></i>
+              <span> +91-8907656789</span>
+            </li>
+            <li>
+              <i className="fa fa-map-marker"></i>
+              <span> Bangalore, India</span>
+            </li>
           </ul>
-
-          <button className="btn-primary">Book Now</button>
         </div>
 
         {/* RIGHT SIDE */}
         <div className="contact-form">
-          <form>
+          <form onSubmit={handleSubmit}>
 
             <div className="form-row">
               <div className="form-group">
                 <label>Name</label>
-                <input type="text" placeholder="First Name" />
+                <input
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  required
+                />
               </div>
 
               <div className="form-group">
-                <label>Number</label>
-                <input type="text" placeholder="Number" />
+                <label>Phone</label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
               </div>
             </div>
 
             <div className="form-group full">
               <label>Email</label>
-              <input type="email" placeholder="Email" />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div className="form-group full">
-              <label>How can we help you?</label>
-              <textarea placeholder="Enter your message here"></textarea>
+              <label>Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
             </div>
 
             <div className="form-actions">
-              <button type="submit" className="btn-primary">
-                Send Message
+              <button
+                type="submit"
+                className="btn-send"
+                disabled={loading}
+              >
+                {loading ? "Sending..." : "Send Message"}
               </button>
             </div>
 

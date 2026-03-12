@@ -13,10 +13,10 @@ function Indoorplants() {
      
          <div className="row">
            {[
-             ["China Plant", 500, indoor1],
-             ["Watermelon Peperomia", 50, indoor2],
-             ["petra Croton", 50, indoor3],
-             ["Money Plant Variegated", 50, indoor4],
+             ["Peace Lily", 500, indoor1],
+             ["Monstera Obliqua", 50, indoor2],
+             ["Jade Mini Plant", 50, indoor3],
+             ["Aglaonema Red Plant", 50, indoor4],
            ].map(([name, price, img]) => (
              <div className="col" key={name}>
                <div className="card">
@@ -27,9 +27,11 @@ function Indoorplants() {
                    <button
                   className="btn btn-success"
                   onClick={() =>
-                    addToCart({
-                      name: name,
-                      price: price
+  addToCart({
+    id: name + price,   // id add pannu
+    name: name,
+    price: price,
+    image: img    
                     })
                   }
                 >

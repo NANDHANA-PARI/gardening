@@ -1,11 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-export default function PaymentSuccess() {
+export default function PaymentSuccess1() {
   const navigate = useNavigate();
-  const orderData = JSON.parse(localStorage.getItem("latestOrder"));
 
-    const orderId = orderData?.orderId;
-  const amount = orderData?.amount;
   return (
     <div className="success-wrapper">
       <div className="success-card">
@@ -13,12 +10,8 @@ export default function PaymentSuccess() {
 
         <h2>Order Successful</h2>
 
-        <p className="order-info">
-           Order #{orderId} | ₹{amount} | Visa ending in 4589
-        </p>
-
         <p className="sub-text">
-          Thank you for your payment. Your order will be processed shortly.
+          Thank you for your order. Your order will be processed shortly.
         </p>
 
         <button

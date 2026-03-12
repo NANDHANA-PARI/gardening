@@ -14,7 +14,7 @@ function Header() {
   <img
     src={log2}
     alt="Green Haven Logo"
-    style={{ height: "30px" }}
+    style={{ height: "55px" }}
   />
 </Link>
 
@@ -57,6 +57,34 @@ function Header() {
               <li><NavLink className="dropdown-item" to="/plants/indoorplants">Indoor Plants</NavLink></li>
               <li><NavLink className="dropdown-item" to="/plants/outdoorplants">Outdoor Plants</NavLink></li>
               <li><NavLink className="dropdown-item" to="/plants/hangingplants">Hanging Plants</NavLink></li>
+            </ul>
+          </li>
+          <li className="nav-item dropdown">
+            <span
+              className="nav-link dropdown-toggle"
+              role="button"
+              data-bs-toggle="dropdown"
+            >
+              Pots
+            </span>
+            <ul className="dropdown-menu">
+              <li><NavLink className="dropdown-item" to="/pots/ceramicpots">Ceramic pots</NavLink></li>
+              <li><NavLink className="dropdown-item" to="/pots/plasticpots">Plastic pots</NavLink></li>
+              <li><NavLink className="dropdown-item" to="/pots/woodenpots">Wooden pots</NavLink></li>
+            </ul>
+          </li>
+          <li className="nav-item dropdown">
+            <span
+              className="nav-link dropdown-toggle"
+              role="button"
+              data-bs-toggle="dropdown"
+            >
+              Seeds
+            </span>
+            <ul className="dropdown-menu">
+              <li><NavLink className="dropdown-item" to="/seeds/fruitseeds">Fruit seeds</NavLink></li>
+              <li><NavLink className="dropdown-item" to="/seeds/vegetableseeds">Vegetable seeds</NavLink></li>
+              <li><NavLink className="dropdown-item" to="/seeds/flowerseeds">Flower seeds</NavLink></li>
             </ul>
           </li>
 
