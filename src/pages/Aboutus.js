@@ -37,7 +37,7 @@ function Aboutus() {
               <p>
                 To create healthy, sustainable, and beautiful green spaces by
                 combining expert gardening practices with eco-friendly solutions
-                that bring nature closer to everyday living.
+                
               </p>
             </div>
 
